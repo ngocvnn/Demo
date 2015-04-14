@@ -1,0 +1,14 @@
+<% if logged_in? %>
+	<div class="row">
+		<div class="col-md-12" >	
+			<%= form_for(status.comments.build) do |f| %>
+			  <%= render 'shared/error_messages', object: f.object %>
+			  <div class="field">
+			    <%= f.text_area :content, placeholder: "Compose comment..." %>
+			    <%= f.hidden_field :status_id %>
+			  </div>
+			  <%= f.submit "Post", class: "btn btn-primary" %>
+			<% end %>
+		</div>
+	</div>
+<% end %>

@@ -1,0 +1,27 @@
+<li id="status-<%= @status.id %>" class="show">
+  <%= link_to gravatar_for(@status.user), @status.user %>   
+  <span class="show-title">
+    <%= link_to @status.title %><br/>
+  </span>
+  
+  <span class="show-time">
+    <%= time_ago_in_words(@status.created_at) %> ago.
+  </span>
+
+  <span class="show-content">
+    <%= @status.content %>
+  </span>
+
+  <span class="show-timestamp">
+     <i> by: <%= link_to @status.user.name, @status.user %></i>   
+  </span>  
+  <span class="show-comment">
+    <%=  render partial: 'comments/comment_form' , locals: {status: @status} %>
+  </span>
+
+  <span> All comments (<%= @status.comments.count %>) </span>
+  <span>
+    <%= render partial: 'comments/show_form',locals: {status: @status} %>
+  </span> 
+  
+</li>

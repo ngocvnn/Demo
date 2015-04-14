@@ -1,0 +1,30 @@
+<% provide(:title) %>
+<div class="center jumbotron">
+      <h1>Welcome to the Blog</h1>
+       <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+<span id="text">All Feed <span>
+<ul class="statuses">
+  <% @statuses.each do |status| %>
+    <li>
+      <%= link_to gravatar_for(status.user), status.user %>	  
+	  <span class="title">
+	  	<%= link_to status.title %><br/>
+	  </span>
+	  <span>
+	  	<%= time_ago_in_words(status.created_at) %> ago.
+	  </span>
+	  </span>
+	  <span class="content">
+	  	<%= status.content %>
+	  </span>
+	  <span class="timestamp">
+	    <i> by: <%= link_to status.user.name, status.user %></i>   
+	  </span>  
+	 <span class="comment">
+      <%= render partial: 'comments/show_form',locals: {status: status} %>
+    </span> 
+  <% end %>  
+
+</ul>
+<%= will_paginate %>
