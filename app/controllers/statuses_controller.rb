@@ -1,6 +1,6 @@
 class StatusesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  
+
   def index
     # @statuses = Status.all
     @statuses = Status.paginate(page: params[:page])
@@ -31,7 +31,11 @@ class StatusesController < ApplicationController
   end
 
   def destroy
+    Status.find(params[:id]).destroy
+    flash[:success] = "Status deleted"
+    redirect_to feed_url
   end
+
 
   private
 

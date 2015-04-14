@@ -1,5 +1,12 @@
 <li id="status-<%= status.id %>">
- 	<%= link_to gravatar_for(status.user), status.user %>	  
+
+ 	 <%= link_to gravatar_for(status.user), status.user %>	
+ 	 <div class="delete">  
+	 	 <% if current_user?(status.user) %>
+	      <%= link_to "Delete", status, method: :delete,
+	                                  data: { confirm: "You sure?" } %>
+	   <% end %>
+	 </div>
 	<span class="title">
 		<%= link_to status.title %><br/>
 	</span>
