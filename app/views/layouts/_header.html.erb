@@ -4,7 +4,8 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-          <li><%= link_to "Home",feed_all_path %> </li>    
+          <li><%= link_to "Home",feed_all_path %> </li>  
+          <li><%= link_to "My Post", feed_path %></li>  
           <li><%= link_to "Users", users_path %></li>
           <li><%= link_to "Help", help_path %></li>
           <li class="dropdown">
@@ -12,7 +13,7 @@
               Account <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Profile", feed_path %></li>
+              <li><%= link_to "Profile", current_user %></li>
               <li class="divider"></li>
               <li>
                 <%= link_to "Log out", logout_path, method: "delete" %>
