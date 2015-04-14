@@ -6,14 +6,23 @@
     	  <span class="content">
     	  	<%= comment.content %>
     	  </span>
+          <span class="delete">  
+             <% if current_user?(status.user) %>
+                <%= link_to "Delete", comment, method: :delete,
+                                          data: { confirm: "You sure?" } %>
+             <% end %>
+          </span> 
     	  <span>
     	  	<%= time_ago_in_words(comment.created_at) %> ago.
     	  </span>	 
     	  <span class="timestamp">
     	    <i> by: <%= link_to comment.user.name, comment.user %></i>   
-    	  </span> 
+    	  </span>
+           
     	 </li> 
-    <% end %>  
+         
+    <% end %>
+
   <% end %>
   <%= will_paginate Comment.paginate(page: params[:page]) %>
 </ul>

@@ -12,6 +12,9 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
+		Comment.find(params[:id]).destroy
+    flash[:success] = "Comment deleted!"
+    redirect_to feed_url
 	end
 	
 	private

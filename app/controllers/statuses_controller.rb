@@ -22,7 +22,7 @@ class StatusesController < ApplicationController
   def create
     @status = current_user.statuses.build(status_params)
     if @status.save
-      flash[:success] = "status created!"
+      flash[:success] = "Status created!"
       redirect_to feed_url
     else
       @feed_items = []
@@ -32,7 +32,7 @@ class StatusesController < ApplicationController
 
   def destroy
     Status.find(params[:id]).destroy
-    flash[:success] = "Status deleted"
+    flash[:success] = "Status deleted!"
     redirect_to feed_url
   end
 
